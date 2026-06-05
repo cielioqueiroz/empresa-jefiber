@@ -6,6 +6,27 @@ import { buildWhatsappUrl, buildMailtoUrl, type ContactForm } from "@/lib/contac
 
 const VAZIO: ContactForm = { nome: "", telefone: "", email: "", mensagem: "" };
 
+const ICON_USER = (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+    <circle cx="12" cy="8" r="3.5" /><path d="M5 20a7 7 0 0 1 14 0" strokeLinecap="round" />
+  </svg>
+);
+const ICON_PHONE = (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+    <path d="M5 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" strokeLinejoin="round" />
+  </svg>
+);
+const ICON_MAIL = (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+    <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" strokeLinejoin="round" />
+  </svg>
+);
+const ICON_MSG = (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+    <path d="M4 5h16v11H9l-4 3v-3H4V5Z" strokeLinejoin="round" />
+  </svg>
+);
+
 export default function Contato() {
   const [form, setForm] = useState<ContactForm>(VAZIO);
   const set = (k: keyof ContactForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -31,10 +52,22 @@ export default function Contato() {
           </div>
         </div>
         <form onSubmit={enviarWhats} className="space-y-4">
-          <input required aria-label="Nome" value={form.nome} onChange={set("nome")} placeholder="Nome" className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
-          <input required aria-label="Telefone" value={form.telefone} onChange={set("telefone")} placeholder="Telefone" className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
-          <input required aria-label="E-mail" type="email" value={form.email} onChange={set("email")} placeholder="E-mail" className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
-          <textarea required aria-label="Mensagem" value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-papoula">{ICON_USER}</span>
+            <input required aria-label="Nome" value={form.nome} onChange={set("nome")} placeholder="Nome" className="input-soft w-full border border-white/15 bg-marinho-2/40 py-3 pl-11 pr-4 font-body text-white placeholder:text-white/40" />
+          </div>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-papoula">{ICON_PHONE}</span>
+            <input required aria-label="Telefone" value={form.telefone} onChange={set("telefone")} placeholder="Telefone" className="input-soft w-full border border-white/15 bg-marinho-2/40 py-3 pl-11 pr-4 font-body text-white placeholder:text-white/40" />
+          </div>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-papoula">{ICON_MAIL}</span>
+            <input required aria-label="E-mail" type="email" value={form.email} onChange={set("email")} placeholder="E-mail" className="input-soft w-full border border-white/15 bg-marinho-2/40 py-3 pl-11 pr-4 font-body text-white placeholder:text-white/40" />
+          </div>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3.5 top-4 text-papoula">{ICON_MSG}</span>
+            <textarea required aria-label="Mensagem" value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="input-soft w-full border border-white/15 bg-marinho-2/40 py-3 pl-11 pr-4 font-body text-white placeholder:text-white/40" />
+          </div>
           <div className="flex flex-wrap gap-3">
             <button type="submit" className="btn-soft btn-red bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white">Enviar pelo WhatsApp</button>
             <a href={buildMailtoUrl(form, CONTATO.email)} className="btn-soft btn-ghost border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Enviar por e-mail</a>

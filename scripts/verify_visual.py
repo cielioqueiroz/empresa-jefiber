@@ -45,12 +45,17 @@ def run():
             page.screenshot(path=os.path.join(OUT, "desktop_solucoes.png"))
         except Exception as e: errors.append(f"[solucoes] {e}")
 
-        # Infra + Projetos + Contato
-        for sec in ["infraestrutura", "projetos", "contato"]:
+        # demais seções
+        for sec in ["areas", "infraestrutura", "projetos", "contato"]:
             try:
                 page.locator(f"#{sec}").scroll_into_view_if_needed(); page.wait_for_timeout(700)
                 page.screenshot(path=os.path.join(OUT, f"desktop_{sec}.png"))
             except Exception as e: errors.append(f"[{sec}] {e}")
+        # rodapé
+        try:
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)"); page.wait_for_timeout(800)
+            page.screenshot(path=os.path.join(OUT, "desktop_footer.png"))
+        except Exception as e: errors.append(f"[footer] {e}")
 
         ctx.close()
 

@@ -5,18 +5,28 @@ export const CONTATO = {
   email: "comercial@jefiber.com.br",
   endereco: "Estrada Municipal do Biri (IPN-463), nº 230, Mini Distrito Industrial III, Ipeúna/SP, CEP 13.537-000",
   enderecoCurto: "Estrada Municipal do Biri, nº 230 — Ipeúna/SP",
+  enderecos: [
+    "Estrada Municipal do Biri (IPN-463), nº 230, Mini Distrito Industrial III, Ipeúna/SP, CEP 13.537-000",
+    "Chácara Primavera, nº 05, Estrada da Lapa, Zona Rural, Ipeúna/SP, CEP 13.537-000",
+  ],
 } as const;
 
-export const REDES = [
-  { nome: "Instagram", url: "https://www.instagram.com/je.fiber/" },
-  { nome: "LinkedIn", url: "https://www.linkedin.com/in/je-fiber-7b956b140/" },
-  { nome: "Facebook", url: "https://www.facebook.com/jefiber/" },
-] as const;
+export type Rede = "instagram" | "linkedin" | "facebook";
+export const REDES: readonly { nome: string; rede: Rede; url: string }[] = [
+  { nome: "Instagram", rede: "instagram", url: "https://www.instagram.com/je.fiber/" },
+  { nome: "LinkedIn", rede: "linkedin", url: "https://www.linkedin.com/in/je-fiber-7b956b140/" },
+  { nome: "Facebook", rede: "facebook", url: "https://www.facebook.com/jefiber/" },
+];
+
+// Texto institucional (Nossa História) — fonte: site da empresa
+export const SOBRE_TEXTO =
+  "A JE FIBER é especialista na fabricação, instalação e manutenção de produtos em fibra de vidro, oferecendo soluções robustas e personalizadas para os setores de saneamento básico e industrial. Com forte atuação em tratamentos de água, esgoto e efluentes, além de áreas industriais como química, alimentícia, petroquímica e sucroalcooleira, trazemos ampla experiência e comprometimento com a qualidade em cada projeto.";
 
 export const NAV = [
   { label: "Sobre", href: "#sobre" },
   { label: "Soluções", href: "#solucoes" },
   { label: "Serviços", href: "#servicos" },
+  { label: "Áreas", href: "#areas" },
   { label: "Infraestrutura", href: "#infraestrutura" },
   { label: "Projetos", href: "#projetos" },
   { label: "Contato", href: "#contato" },
@@ -55,6 +65,72 @@ export const SOLUCOES: readonly Solucao[] = [
     funcoes: "Tratamento biológico e físico-químico de efluentes; resistência a meios agressivos.",
     fabricacao: "Reatores, tanques e tubulações PRFV dimensionados por vazão.",
     manutencao: "Inspeção, reparo e modernização de unidades existentes.",
+  },
+  {
+    id: "tampas", titulo: "Tampas", imagem: "/images/jeFiber_09.png",
+    resumo: "Tampas em fibra de vidro para tanques e reservatórios, sob medida.",
+    funcoes: "Vedação e acesso de inspeção para tanques, reservatórios e estações.",
+    fabricacao: "Laminação em PRFV com reforços e bocais conforme o projeto.",
+    manutencao: "Substituição e recuperação de tampas e vedações desgastadas.",
+  },
+  {
+    id: "pecas", titulo: "Peças Especiais", imagem: "/images/jeFiber_05.png",
+    resumo: "Componentes e conexões especiais em PRFV fabricados sob demanda.",
+    funcoes: "Flanges, curvas, reduções e peças técnicas para sistemas em fibra.",
+    fabricacao: "Fabricação sob medida a partir do desenho ou da necessidade do cliente.",
+    manutencao: "Reposição de peças e adequação de sistemas existentes.",
+  },
+];
+
+export type Area = { nome: string; itens: readonly string[] };
+export const AREAS: readonly Area[] = [
+  {
+    nome: "Açúcar e Álcool",
+    itens: [
+      "Armazenagem de água e produtos químicos: bissulfato de cálcio, ácido fosfórico, melaço, caldo de cana e vinhaça",
+      "Vasos de processo, reatores e misturadores",
+      "Condução de água bruta, vinhaça e efluente industrial",
+    ],
+  },
+  {
+    nome: "Indústrias Químicas",
+    itens: [
+      "Armazenagem de ácidos, bases, sulfatos, cloretos, etc.",
+      "Vasos de processo, reatores e misturadores",
+      "Condução de água bruta, de chuva, de reuso, efluente industrial e químicos sob consulta",
+    ],
+  },
+  {
+    nome: "Indústria de Alimentos",
+    itens: [
+      "Armazenagem de produtos alimentícios: glucose, vinho, melaço, açúcar líquido, vinagre, água potável, molhos, óleos e sucos",
+      "Condução de água bruta, de chuva, de reuso e efluente industrial",
+      "Produtos químicos sob consulta",
+    ],
+  },
+  {
+    nome: "Papel e Celulose",
+    itens: [
+      "Armazenagem de ácidos, bases, sulfatos, cloretos, etc.",
+      "Vasos de processo, reatores e armazenagem de produtos acabados",
+      "Condução de água bruta, de chuva, de reuso e efluente industrial",
+    ],
+  },
+  {
+    nome: "Indústrias Petroquímicas",
+    itens: [
+      "Armazenagem de ácidos, bases, sulfatos, cloretos, etc.",
+      "Vasos de processo, reatores e armazenagem de produtos acabados",
+      "Condução de água bruta, de chuva, de reuso e efluente industrial",
+    ],
+  },
+  {
+    nome: "Saneamento",
+    itens: [
+      "Reservatórios e tubulações para água potável e tratada",
+      "Estações de tratamento de água (ETA) e esgoto (ETE)",
+      "Adução e transporte de efluentes",
+    ],
   },
 ];
 

@@ -144,6 +144,11 @@ textarea:focus-visible {
   outline: none;
 }
 
+/* ---------- Ken-burns sutil para fotos da empresa ---------- */
+.kenburns { animation: kenburns 20s ease-in-out infinite alternate; will-change: transform; }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09); } }
+@media (prefers-reduced-motion: reduce) { .kenburns { animation: none; } }
+
 /* ---------- Carrossel de projetos (auto-scroll, pausa no hover) ---------- */
 .proj-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .proj-track { display: flex; width: max-content; gap: 1.5rem; animation: proj-scroll 38s linear infinite; will-change: transform; }

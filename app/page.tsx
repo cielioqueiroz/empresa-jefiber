@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import Sobre from "@/components/sections/Sobre";
 import Solucoes from "@/components/sections/Solucoes";
 import Servicos from "@/components/sections/Servicos";
+import Areas from "@/components/sections/Areas";
 import Infraestrutura from "@/components/sections/Infraestrutura";
 import Projetos from "@/components/sections/Projetos";
 import Contato from "@/components/sections/Contato";
@@ -16,6 +17,7 @@ export default function Home() {
       <Sobre />
       <Solucoes />
       <Servicos />
+      <Areas />
       <Infraestrutura />
       <Projetos />
       <Contato />

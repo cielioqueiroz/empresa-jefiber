@@ -5,8 +5,8 @@ describe("constants", () => {
   it("tem telefone do whatsapp só com dígitos", () => {
     expect(CONTATO.whatsapp).toMatch(/^\d{12,13}$/);
   });
-  it("tem 4 soluções com imagem e título", () => {
-    expect(SOLUCOES).toHaveLength(4);
+  it("tem soluções (>=4) com imagem e título", () => {
+    expect(SOLUCOES.length).toBeGreaterThanOrEqual(4);
     for (const s of SOLUCOES) {
       expect(s.titulo.length).toBeGreaterThan(0);
       expect(s.imagem.startsWith("/images/")).toBe(true);

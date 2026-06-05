@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { NAV } from "@/lib/constants";
+import { NAV, CONTATO } from "@/lib/constants";
+import SocialIcons from "@/components/ui/SocialIcons";
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
@@ -14,6 +15,20 @@ export default function Header() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${solid ? "bg-marinho/90 backdrop-blur border-b border-white/10" : "bg-transparent"}`}>
+      {/* Barra de topo — redes + contatos (recolhe ao rolar) */}
+      <div className={`overflow-hidden border-b border-white/5 bg-marinho/60 transition-all duration-300 ${solid ? "max-h-0 opacity-0" : "max-h-12 opacity-100"}`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-1.5">
+          <SocialIcons size={28} variant="plain" />
+          <div className="hidden items-center gap-5 font-mono-tech text-[11px] text-white/70 sm:flex">
+            {CONTATO.telefones.map((t) => (
+              <a key={t} href={`tel:+55${t.replace(/\D/g, "")}`} className="transition-colors hover:text-white">📞 {t}</a>
+            ))}
+            <a href={`mailto:${CONTATO.email}`} className="transition-colors hover:text-white">✉ {CONTATO.email}</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Barra principal — logo, navegação, CTA */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#topo" aria-label="JE FIBER — início" className="relative h-9 w-36">
           <Image src="/images/logo-jefiber.png" alt="JE FIBER" fill className="object-contain object-left brightness-0 invert" priority />
