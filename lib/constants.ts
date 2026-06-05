@@ -5,7 +5,7 @@ export const CONTATO = {
   email: "comercial@jefiber.com.br",
   endereco: "Estrada Municipal do Biri (IPN-463), nº 230, Mini Distrito Industrial III, Ipeúna/SP, CEP 13.537-000",
   enderecoCurto: "Estrada Municipal do Biri, nº 230 — Ipeúna/SP",
-};
+} as const;
 
 export const REDES = [
   { nome: "Instagram", url: "https://www.instagram.com/je.fiber/" },
@@ -27,7 +27,7 @@ export type Solucao = {
   funcoes: string; fabricacao: string; manutencao: string;
 };
 
-export const SOLUCOES: Solucao[] = [
+export const SOLUCOES: readonly Solucao[] = [
   {
     id: "tubos", titulo: "Tubos e conexões RPVC / PRFV", imagem: "/images/jeFiber_16.png",
     resumo: "Tubulação de alta resistência química e mecânica para adução e transporte.",

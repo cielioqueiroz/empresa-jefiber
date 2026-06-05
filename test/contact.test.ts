@@ -10,6 +10,7 @@ describe("contact builders", () => {
     expect(url).toContain("Maria");
     expect(url).toContain("%26"); // & codificado
     expect(url).not.toContain(" "); // sem espaços crus
+    expect(url).toContain("Vim%20pelo%20site");
   });
 
   it("monta mailto com subject e body", () => {
