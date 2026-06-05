@@ -11,9 +11,9 @@ const config: Config = {
         branco: "#ffffff",
       },
       fontFamily: {
-        display: ["var(--font-archivo)", "system-ui", "sans-serif"],
-        body: ["var(--font-manrope)", "system-ui", "sans-serif"],
-        tech: ["var(--font-plex-mono)", "ui-monospace", "monospace"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        tech: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
     },
   },

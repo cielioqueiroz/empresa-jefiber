@@ -1,17 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import Waves from "./Waves";
-
-/** Brilho difuso atrás das ondas — dá profundidade ao fundo marinho. */
-function Glow() {
-  return (
-    <mesh position={[1, 0.4, -6]}>
-      <circleGeometry args={[7, 48]} />
-      <meshBasicMaterial color="#1e3bd6" transparent opacity={0.08} />
-    </mesh>
-  );
-}
+import FiberOrb from "./FiberOrb";
 
 export default function HeroCanvas() {
   const scrollRef = useRef(0);
@@ -29,13 +19,12 @@ export default function HeroCanvas() {
   return (
     <div ref={wrap} className="h-full w-full">
       <Canvas
-        camera={{ position: [0, 1.3, 5], fov: 45 }}
-        dpr={[1, 1.5]}
+        camera={{ position: [0, 0, 6], fov: 45 }}
+        dpr={[1, 1.8]}
         frameloop={visivel ? "always" : "demand"}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >
-        <Glow />
-        <Waves scrollRef={scrollRef} />
+        <FiberOrb scrollRef={scrollRef} />
       </Canvas>
     </div>
   );

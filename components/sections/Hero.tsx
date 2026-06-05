@@ -42,8 +42,8 @@ export default function Hero() {
               Produtos em fibra de vidro (PRFV/RPVC) com engenharia avançada para os setores de saneamento, químico e alimentício.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#contato" data-cursor className="rounded-sm bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white transition-transform hover:scale-105">Fale conosco</a>
-              <a href="#solucoes" data-cursor className="rounded-sm border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Ver soluções</a>
+              <a href="#contato" className="btn-soft btn-red bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white">Fale conosco</a>
+              <a href="#solucoes" className="btn-soft btn-ghost border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Ver soluções</a>
             </div>
           </div>
         </div>

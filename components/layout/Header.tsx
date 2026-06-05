@@ -20,10 +20,10 @@ export default function Header() {
         </a>
         <nav className="hidden items-center gap-7 md:flex">
           {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="font-mono-tech text-xs uppercase text-white/80 transition-colors hover:text-white">{n.label}</a>
+            <a key={n.href} href={n.href} className="nav-link font-mono-tech text-xs uppercase text-white/80 transition-colors hover:text-white">{n.label}</a>
           ))}
         </nav>
-        <a href="#contato" className="rounded-sm bg-papoula px-4 py-2 font-body text-xs font-bold uppercase tracking-wide text-white transition-transform hover:scale-105">Fale conosco</a>
+        <a href="#contato" className="btn-soft btn-red bg-papoula px-5 py-2.5 font-body text-xs font-bold uppercase tracking-wide text-white">Fale conosco</a>
       </div>
     </header>
   );

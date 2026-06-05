@@ -31,13 +31,13 @@ export default function Contato() {
           </div>
         </div>
         <form onSubmit={enviarWhats} className="space-y-4">
-          <input required aria-label="Nome" value={form.nome} onChange={set("nome")} placeholder="Nome" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
-          <input required aria-label="Telefone" value={form.telefone} onChange={set("telefone")} placeholder="Telefone" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
-          <input required aria-label="E-mail" type="email" value={form.email} onChange={set("email")} placeholder="E-mail" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
-          <textarea required aria-label="Mensagem" value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
+          <input required aria-label="Nome" value={form.nome} onChange={set("nome")} placeholder="Nome" className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
+          <input required aria-label="Telefone" value={form.telefone} onChange={set("telefone")} placeholder="Telefone" className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
+          <input required aria-label="E-mail" type="email" value={form.email} onChange={set("email")} placeholder="E-mail" className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
+          <textarea required aria-label="Mensagem" value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="w-full input-soft border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40" />
           <div className="flex flex-wrap gap-3">
-            <button type="submit" data-cursor className="rounded-sm bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white transition-transform hover:scale-105">Enviar pelo WhatsApp</button>
-            <a href={buildMailtoUrl(form, CONTATO.email)} data-cursor className="rounded-sm border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Enviar por e-mail</a>
+            <button type="submit" className="btn-soft btn-red bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white">Enviar pelo WhatsApp</button>
+            <a href={buildMailtoUrl(form, CONTATO.email)} className="btn-soft btn-ghost border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Enviar por e-mail</a>
           </div>
           {/* TODO: integrar envio real (Formspree/Resend) quando aprovado */}
         </form>

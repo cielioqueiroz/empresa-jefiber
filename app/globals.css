@@ -13,13 +13,13 @@ html { scroll-behavior: auto; }
 body {
   background: var(--marinho);
   color: var(--branco);
-  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-.font-display { font-family: var(--font-archivo), sans-serif; }
-.font-mono-tech { font-family: var(--font-plex-mono), monospace; letter-spacing: .12em; }
+.font-display { font-family: var(--font-display), sans-serif; }
+.font-mono-tech { font-family: var(--font-mono), monospace; letter-spacing: .12em; }
 
 .tech-line { background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent); height: 1px; }
 
@@ -108,3 +108,45 @@ textarea:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .aurora { animation: none !important; }
 }
+
+/* ---------- Botões: cantos suaves + lift no hover (igual aos cards) ---------- */
+.btn-soft {
+  border-radius: 0.85rem;
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease, background-color .3s ease;
+  will-change: transform;
+}
+.btn-soft:hover { transform: translateY(-3px); }
+.btn-red { box-shadow: 0 8px 24px rgba(255,0,0,.28); }
+.btn-red:hover { box-shadow: 0 16px 40px rgba(255,0,0,.5); }
+.btn-ghost:hover { box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+
+/* ---------- Nav: sublinhado vermelho animado ---------- */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: "";
+  position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+  background: var(--papoula);
+  box-shadow: 0 0 10px rgba(255,0,0,.6);
+  transition: width .3s cubic-bezier(.2,.7,.2,1);
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ---------- Inputs: efeito no hover/focus ---------- */
+.input-soft {
+  border-radius: 0.7rem;
+  transition: border-color .25s ease, box-shadow .3s ease, background-color .25s ease, transform .25s ease;
+}
+.input-soft:hover { border-color: rgba(255,255,255,.4); background-color: rgba(10,12,74,.6); }
+.input-soft:focus {
+  border-color: var(--papoula);
+  box-shadow: 0 0 0 3px rgba(255,0,0,.18);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* ---------- Carrossel de projetos (auto-scroll, pausa no hover) ---------- */
+.proj-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.proj-track { display: flex; width: max-content; gap: 1.5rem; animation: proj-scroll 38s linear infinite; will-change: transform; }
+.proj-marquee:hover .proj-track { animation-play-state: paused; }
+@keyframes proj-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .proj-track { animation: none; } }

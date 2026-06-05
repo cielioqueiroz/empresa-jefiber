@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Archivo, Manrope, IBM_Plex_Mono } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 
-const archivo = Archivo({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-archivo" });
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-manrope" });
-const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-plex-mono" });
+const display = Sora({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display" });
+const body = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body" });
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
   title: "JE FIBER — Produtos em fibra de vidro PRFV/RPVC",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${archivo.variable} ${manrope.variable} ${plexMono.variable}`}>
+    <html lang="pt-BR" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <SmoothScroll>
           {children}
