@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-archivo" });
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-manrope" });
@@ -20,7 +21,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${archivo.variable} ${manrope.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
