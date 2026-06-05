@@ -37,3 +37,7 @@ next-env.d.ts
 
 # screenshots de verificação visual (efêmero)
 /.verify_shots/
+
+# acervo-fonte pesado (fotos originais duplicadas em public/images, brandbook PDF, briefing)
+# mantido localmente; não precisa no repositório
+/assets/
