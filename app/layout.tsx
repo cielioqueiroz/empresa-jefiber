@@ -3,7 +3,6 @@ import { Archivo, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import CustomCursor from "@/components/layout/CustomCursor";
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-archivo" });
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-manrope" });
@@ -25,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={`${archivo.variable} ${manrope.variable} ${plexMono.variable}`}>
       <body>
         <SmoothScroll>
-          <CustomCursor />
           {children}
           <WhatsAppFloat />
         </SmoothScroll>

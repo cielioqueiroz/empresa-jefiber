@@ -14,13 +14,22 @@ export default function Hero() {
 
   return (
     <section id="topo" className="relative flex min-h-screen items-center overflow-hidden">
+      {/* fundo: marinho + aurora (gradientes animados) + textura de fibra sutil */}
       <div className="absolute inset-0 -z-10 bg-marinho">
-        <div className="absolute inset-0 opacity-[0.15] [background:repeating-linear-gradient(115deg,transparent_0_6px,rgba(255,255,255,.6)_6px_7px)]" />
-        <div className="absolute inset-0 [background:radial-gradient(80%_60%_at_70%_40%,rgba(10,12,74,.9),#010238)]" />
+        <div className="aurora-backdrop">
+          <span className="aurora aurora--a" />
+          <span className="aurora aurora--b" />
+          <span className="aurora aurora--c" />
+        </div>
+        <div className="absolute inset-0 opacity-[0.06] [background:repeating-linear-gradient(115deg,transparent_0_6px,rgba(255,255,255,.5)_6px_7px)]" />
       </div>
+      {/* ondas 3D (wireframe) */}
       <div id="hero-canvas-slot" className="absolute inset-0 -z-10">
         {show3D && <Suspense fallback={null}><HeroCanvas /></Suspense>}
       </div>
+      {/* véu para legibilidade do texto à esquerda */}
+      <div className="absolute inset-0 -z-10 [background:linear-gradient(90deg,#010238_0%,rgba(1,2,56,.55)_38%,transparent_72%)]" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 [background:linear-gradient(to_top,#010238,transparent)]" />
 
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="flex items-stretch gap-5">

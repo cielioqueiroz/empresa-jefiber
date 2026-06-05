@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
+import TiltCard from "@/components/ui/TiltCard";
 
 const ITENS = [
   { titulo: "Fabricação", img: "/images/jeFiber_26.png", desc: "Produção de tubos, conexões e reservatórios por enrolamento filamentar e laminação, sob projeto." },
@@ -16,13 +17,15 @@ export default function Servicos() {
       </h2>
       <div className="grid gap-6 md:grid-cols-3">
         {ITENS.map((it) => (
-          <article key={it.titulo} className="overflow-hidden rounded-md border border-white/10">
-            <div className="relative h-48"><Image src={it.img} alt={it.titulo} fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" /></div>
+          <TiltCard key={it.titulo} className="group rounded-md border border-white/10 bg-marinho">
+            <div className="relative h-48 overflow-hidden">
+              <Image src={it.img} alt={it.titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
+            </div>
             <div className="p-6">
               <h3 className="font-display text-lg font-bold uppercase text-white">{it.titulo}</h3>
               <p className="mt-2 font-body text-sm text-white/70">{it.desc}</p>
             </div>
-          </article>
+          </TiltCard>
         ))}
       </div>
     </section>

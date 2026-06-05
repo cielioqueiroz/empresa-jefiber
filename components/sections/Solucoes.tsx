@@ -18,7 +18,7 @@ export default function Solucoes() {
           {SOLUCOES.map((s) => {
             const open = aberto === s.id;
             return (
-              <TiltCard key={s.id} className="group">
+              <TiltCard key={s.id} className="group rounded-md">
                 <div className="overflow-hidden rounded-md border border-white/10 bg-marinho">
                   <div className="relative h-52 overflow-hidden">
                     <Image src={s.imagem} alt={s.titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 50vw" />

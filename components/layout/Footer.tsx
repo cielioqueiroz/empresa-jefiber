@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-marinho">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-3">
         <div>
-          <div className="relative mb-4 h-9 w-36"><Image src="/images/logo-jefiber.png" alt="JE FIBER" fill className="object-contain object-left" /></div>
+          <div className="relative mb-4 h-9 w-36"><Image src="/images/logo-jefiber.png" alt="JE FIBER" fill className="object-contain object-left brightness-0 invert" /></div>
           <p className="max-w-xs font-body text-sm text-white/70">Tecnologia e qualidade na fabricação e manutenção de produtos em fibra de vidro.</p>
         </div>
         <nav className="flex flex-col gap-2">

@@ -15,8 +15,8 @@ export default function Header() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${solid ? "bg-marinho/90 backdrop-blur border-b border-white/10" : "bg-transparent"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#topo" aria-label="JE FIBER — início" className="relative h-8 w-32">
-          <Image src="/images/logo-jefiber.png" alt="JE FIBER" fill className="object-contain object-left" priority />
+        <a href="#topo" aria-label="JE FIBER — início" className="relative h-9 w-36">
+          <Image src="/images/logo-jefiber.png" alt="JE FIBER" fill className="object-contain object-left brightness-0 invert" priority />
         </a>
         <nav className="hidden items-center gap-7 md:flex">
           {NAV.map((n) => (

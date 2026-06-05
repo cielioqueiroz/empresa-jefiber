@@ -27,14 +27,84 @@ body {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  body { cursor: none; }
-}
-
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--papoula);
   outline-offset: 2px;
+}
+
+/* ---------- Aurora backdrop (gradientes animados, sem WebGL) ---------- */
+.aurora-backdrop { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+.aurora--a {
+  width: 60vw; height: 60vw; left: 55%; top: -15%;
+  background: radial-gradient(circle, #1e3bd6 0%, transparent 65%);
+  opacity: 0.5;
+  animation: aurora-drift-a 26s ease-in-out infinite;
+}
+.aurora--b {
+  width: 50vw; height: 50vw; left: -12%; top: 25%;
+  background: radial-gradient(circle, #0a0c4a 0%, transparent 65%);
+  opacity: 0.6;
+  animation: aurora-drift-b 32s ease-in-out infinite;
+}
+.aurora--c {
+  width: 38vw; height: 38vw; left: 48%; top: 55%;
+  background: radial-gradient(circle, #ff0000 0%, transparent 60%);
+  opacity: 0.16;
+  animation: aurora-drift-c 38s ease-in-out infinite;
+}
+@keyframes aurora-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-10%, 8%) scale(1.08); }
+  66%      { transform: translate(6%, -4%) scale(0.95); }
+}
+@keyframes aurora-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(14%, -10%) scale(1.12); }
+}
+@keyframes aurora-drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%      { transform: translate(-12%, -6%) scale(0.9); }
+  80%      { transform: translate(8%, 10%) scale(1.06); }
+}
+
+/* ---------- Card 3D: base para tilt + spotlight + glare ---------- */
+.card-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+.card-3d > * { transform-style: preserve-3d; }
+
+.spotlight { position: relative; overflow: hidden; }
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    circle 320px at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, #5b7cff 26%, transparent),
+    transparent 70%
+  );
+  z-index: 1;
+}
+.spotlight:hover::before { opacity: 1; }
+.card-3d:hover .tilt-glare { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora { animation: none !important; }
 }

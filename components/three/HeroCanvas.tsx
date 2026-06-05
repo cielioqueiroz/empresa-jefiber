@@ -1,8 +1,17 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import FiberTube from "./FiberTube";
+import Waves from "./Waves";
+
+/** Brilho difuso atrás das ondas — dá profundidade ao fundo marinho. */
+function Glow() {
+  return (
+    <mesh position={[1, 0.4, -6]}>
+      <circleGeometry args={[7, 48]} />
+      <meshBasicMaterial color="#1e3bd6" transparent opacity={0.08} />
+    </mesh>
+  );
+}
 
 export default function HeroCanvas() {
   const scrollRef = useRef(0);
@@ -19,14 +28,14 @@ export default function HeroCanvas() {
 
   return (
     <div ref={wrap} className="h-full w-full">
-      <Canvas camera={{ position: [0, 0, 6], fov: 45 }} dpr={[1, 1.5]} frameloop={visivel ? "always" : "demand"}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[5, 5, 5]} intensity={1.2} />
-        <pointLight position={[-5, -2, 3]} intensity={2} color="#3b3fff" />
-        <FiberTube scrollRef={scrollRef} />
-        <EffectComposer>
-          <Bloom intensity={0.7} luminanceThreshold={0.2} mipmapBlur />
-        </EffectComposer>
+      <Canvas
+        camera={{ position: [0, 1.3, 5], fov: 45 }}
+        dpr={[1, 1.5]}
+        frameloop={visivel ? "always" : "demand"}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+      >
+        <Glow />
+        <Waves scrollRef={scrollRef} />
       </Canvas>
     </div>
   );
