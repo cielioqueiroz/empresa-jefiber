@@ -1,13 +1,26 @@
+"use client";
 import RevealText from "@/components/ui/RevealText";
+import dynamic from "next/dynamic";
+import { Suspense, useEffect, useState } from "react";
+
+const HeroCanvas = dynamic(() => import("@/components/three/HeroCanvas"), { ssr: false });
 
 export default function Hero() {
+  const [show3D, setShow3D] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
+    setShow3D(mq.matches);
+  }, []);
+
   return (
     <section id="topo" className="relative flex min-h-screen items-center overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-marinho">
         <div className="absolute inset-0 opacity-[0.15] [background:repeating-linear-gradient(115deg,transparent_0_6px,rgba(255,255,255,.6)_6px_7px)]" />
         <div className="absolute inset-0 [background:radial-gradient(80%_60%_at_70%_40%,rgba(10,12,74,.9),#010238)]" />
       </div>
-      <div id="hero-canvas-slot" className="absolute inset-0 -z-10" />
+      <div id="hero-canvas-slot" className="absolute inset-0 -z-10">
+        {show3D && <Suspense fallback={null}><HeroCanvas /></Suspense>}
+      </div>
 
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="flex items-stretch gap-5">
