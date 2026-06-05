@@ -12,9 +12,18 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     if (prefersReducedMotion()) return;
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     lenis.on("scroll", ScrollTrigger.update);
-    const raf = (t: number) => { lenis.raf(t); requestAnimationFrame(raf); };
+    let running = true;
+    const raf = (t: number) => {
+      if (!running) return;
+      lenis.raf(t);
+      requestAnimationFrame(raf);
+    };
     const id = requestAnimationFrame(raf);
-    return () => { cancelAnimationFrame(id); lenis.destroy(); };
+    return () => {
+      running = false;
+      cancelAnimationFrame(id);
+      lenis.destroy();
+    };
   }, []);
   return <>{children}</>;
 }
