@@ -34,3 +34,6 @@ next-env.d.ts
 
 # brainstorm visual companion (efêmero)
 /.superpowers/
+
+# screenshots de verificação visual (efêmero)
+/.verify_shots/
