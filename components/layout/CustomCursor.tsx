@@ -7,8 +7,11 @@ export default function CustomCursor() {
   useEffect(() => {
     if (prefersReducedMotion() || window.matchMedia("(pointer: coarse)").matches) return;
     const el = dot.current!;
-    let x = 0, y = 0, tx = 0, ty = 0;
-    const move = (e: MouseEvent) => { tx = e.clientX; ty = e.clientY; };
+    let x = 0, y = 0, tx = 0, ty = 0, shown = false;
+    const move = (e: MouseEvent) => {
+      tx = e.clientX; ty = e.clientY;
+      if (!shown) { shown = true; el.style.opacity = "1"; }
+    };
     const interactive = (e: MouseEvent) =>
       el.classList.toggle("cursor-grow", !!(e.target as HTMLElement).closest("a,button,[data-cursor]"));
     let raf = 0;
@@ -22,5 +25,5 @@ export default function CustomCursor() {
     raf = requestAnimationFrame(loop);
     return () => { cancelAnimationFrame(raf); window.removeEventListener("mousemove", move); window.removeEventListener("mouseover", interactive); };
   }, []);
-  return <div ref={dot} aria-hidden className="pointer-events-none fixed left-0 top-0 z-[60] -ml-3 -mt-3 hidden h-6 w-6 rounded-full border border-papoula/80 mix-blend-difference transition-[width,height] duration-200 md:block [&.cursor-grow]:h-10 [&.cursor-grow]:w-10" />;
+  return <div ref={dot} aria-hidden className="pointer-events-none fixed left-0 top-0 z-[60] -ml-3 -mt-3 hidden h-6 w-6 rounded-full border border-papoula/80 mix-blend-difference transition-[width,height] duration-200 opacity-0 md:block [&.cursor-grow]:h-10 [&.cursor-grow]:w-10" />;
 }

@@ -25,7 +25,7 @@ export default function RevealText({ text, as = "h2", className = "" }: Props) {
     <Tag ref={ref} className={className}>
       {words.map((w, i) => (
         <span key={i} className="inline-block overflow-hidden align-bottom">
-          <span className="rw inline-block">{w}&nbsp;</span>
+          <span className="rw inline-block">{w}{i < words.length - 1 ? " " : ""}</span>
         </span>
       ))}
     </Tag>
