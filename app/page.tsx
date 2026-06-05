@@ -6,6 +6,7 @@ import Solucoes from "@/components/sections/Solucoes";
 import Servicos from "@/components/sections/Servicos";
 import Infraestrutura from "@/components/sections/Infraestrutura";
 import Projetos from "@/components/sections/Projetos";
+import Contato from "@/components/sections/Contato";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Servicos />
       <Infraestrutura />
       <Projetos />
+      <Contato />
       <Footer />
     </main>
   );
