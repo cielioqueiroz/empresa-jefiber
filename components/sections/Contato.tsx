@@ -9,7 +9,7 @@ const VAZIO: ContactForm = { nome: "", telefone: "", email: "", mensagem: "" };
 export default function Contato() {
   const [form, setForm] = useState<ContactForm>(VAZIO);
   const set = (k: keyof ContactForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm({ ...form, [k]: e.target.value });
+    setForm((prev) => ({ ...prev, [k]: e.target.value }));
   const enviarWhats = (e: React.FormEvent) => { e.preventDefault(); window.open(buildWhatsappUrl(form, CONTATO.whatsapp), "_blank"); };
 
   return (
@@ -19,7 +19,9 @@ export default function Contato() {
         <div>
           <h2 className="font-display text-3xl font-extrabold uppercase leading-tight text-white sm:text-4xl">Vamos conversar sobre o seu projeto</h2>
           <div className="mt-8 space-y-3 font-body text-white/80">
-            {CONTATO.telefones.map((t) => <p key={t}>📞 {t}</p>)}
+            {CONTATO.telefones.map((t) => (
+              <p key={t}>📞 <a href={`tel:+55${t.replace(/\D/g, "")}`} className="hover:text-white">{t}</a></p>
+            ))}
             <p>✉️ <a href={`mailto:${CONTATO.email}`} className="hover:text-white">{CONTATO.email}</a></p>
             <p>📍 {CONTATO.endereco}</p>
           </div>
@@ -29,10 +31,10 @@ export default function Contato() {
           </div>
         </div>
         <form onSubmit={enviarWhats} className="space-y-4">
-          <input required value={form.nome} onChange={set("nome")} placeholder="Nome" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
-          <input required value={form.telefone} onChange={set("telefone")} placeholder="Telefone" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
-          <input required type="email" value={form.email} onChange={set("email")} placeholder="E-mail" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
-          <textarea required value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
+          <input required aria-label="Nome" value={form.nome} onChange={set("nome")} placeholder="Nome" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
+          <input required aria-label="Telefone" value={form.telefone} onChange={set("telefone")} placeholder="Telefone" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
+          <input required aria-label="E-mail" type="email" value={form.email} onChange={set("email")} placeholder="E-mail" className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
+          <textarea required aria-label="Mensagem" value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="w-full rounded-sm border border-white/15 bg-marinho-2/40 px-4 py-3 font-body text-white placeholder:text-white/40 focus:border-papoula focus:outline-none" />
           <div className="flex flex-wrap gap-3">
             <button type="submit" data-cursor className="rounded-sm bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white transition-transform hover:scale-105">Enviar pelo WhatsApp</button>
             <a href={buildMailtoUrl(form, CONTATO.email)} data-cursor className="rounded-sm border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Enviar por e-mail</a>

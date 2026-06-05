@@ -27,7 +27,7 @@ export default function Solucoes() {
                   <div className="p-6">
                     <h3 className="font-display text-xl font-bold uppercase text-white">{s.titulo}</h3>
                     <p className="mt-2 font-body text-sm text-white/70">{s.resumo}</p>
-                    <button data-cursor onClick={() => setAberto(open ? null : s.id)}
+                    <button type="button" data-cursor onClick={() => setAberto(open ? null : s.id)}
                       className="font-mono-tech mt-4 text-xs uppercase text-papoula hover:underline">
                       {open ? "Fechar −" : "Detalhes +"}
                     </button>

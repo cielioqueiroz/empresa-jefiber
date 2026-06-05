@@ -23,10 +23,13 @@ export default function Projetos() {
   useGSAP(() => {
     if (prefersReducedMotion() || window.innerWidth < 768) return;
     const t = track.current!;
-    const dist = t.scrollWidth - window.innerWidth;
+    const dist = () => t.scrollWidth - window.innerWidth;
     gsap.to(t, {
-      x: -dist, ease: "none",
-      scrollTrigger: { trigger: wrap.current, pin: true, scrub: 1, start: "top top", end: () => `+=${dist}` },
+      x: () => -dist(), ease: "none",
+      scrollTrigger: {
+        trigger: wrap.current, pin: true, scrub: 1, start: "top top",
+        end: () => `+=${dist()}`, invalidateOnRefresh: true,
+      },
     });
   }, { scope: wrap });
   return (
