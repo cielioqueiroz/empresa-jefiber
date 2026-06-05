@@ -5,6 +5,7 @@ import Sobre from "@/components/sections/Sobre";
 import Solucoes from "@/components/sections/Solucoes";
 import Servicos from "@/components/sections/Servicos";
 import Infraestrutura from "@/components/sections/Infraestrutura";
+import Projetos from "@/components/sections/Projetos";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Solucoes />
       <Servicos />
       <Infraestrutura />
+      <Projetos />
       <Footer />
     </main>
   );
