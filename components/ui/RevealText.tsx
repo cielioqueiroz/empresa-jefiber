@@ -11,7 +11,11 @@ type Props = { text: string; as?: "h1" | "h2" | "h3" | "p"; className?: string }
 
 export default function RevealText({ text, as = "h2", className = "" }: Props) {
   const ref = useRef<HTMLElement>(null);
-  const Tag = as as React.ElementType;
+  const Tag = as as unknown as React.ComponentType<{
+    ref?: React.Ref<HTMLElement>;
+    className?: string;
+    children?: React.ReactNode;
+  }>;
   const words = text.split(" ");
   useGSAP(() => {
     if (prefersReducedMotion()) return;
