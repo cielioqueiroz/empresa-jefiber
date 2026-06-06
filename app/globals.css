@@ -3,19 +3,44 @@
 @tailwind utilities;
 
 :root {
+  /* ----- tema ESCURO (padrão) ----- */
+  --c-bg: 1 2 56;        /* marinho */
+  --c-surface: 10 12 74; /* marinho-2 */
+  --c-ink: 255 255 255;  /* texto */
+  --c-line: 255 255 255; /* bordas/divisores (usadas com baixa opacidade) */
+  /* hex mantidos para gradientes/decorações fixas */
   --marinho: #010238;
   --marinho-2: #0a0c4a;
   --papoula: #ff0000;
   --branco: #ffffff;
 }
 
+.light {
+  /* ----- tema CLARO — azul claro minimalista, fiel à marca ----- */
+  --c-bg: 233 240 252;   /* azul bem claro (fundo) */
+  --c-surface: 255 255 255; /* branco (cards/superfícies) */
+  --c-ink: 9 15 46;      /* texto marinho escuro */
+  --c-line: 1 2 56;      /* bordas marinho (com baixa opacidade) */
+}
+
+/* Logo: branca no tema escuro, colorida (original) no tema claro */
+.logo-img { filter: brightness(0) invert(1); }
+.light .logo-img { filter: none; }
+
+/* Aurora bem discreta no tema claro (evita manchas escuras sobre fundo claro) */
+.light .aurora { opacity: 0.22 !important; }
+
+/* Cards e superfícies ganham leve sombra no claro para separar do fundo */
+.light .spotlight, .light .card-3d { box-shadow: 0 10px 30px rgba(1, 2, 56, 0.06); }
+
 html { scroll-behavior: auto; }
 body {
-  background: var(--marinho);
-  color: var(--branco);
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-ink));
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color .35s ease, color .35s ease;
 }
 
 .font-display { font-family: var(--font-display), sans-serif; }

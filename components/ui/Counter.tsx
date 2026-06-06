@@ -22,8 +22,8 @@ export default function Counter({ to, suffix = "", label }: { to: number; suffix
   }, { scope: ref });
   return (
     <div ref={ref} className="text-center">
-      <span ref={numRef} className="font-display text-5xl font-extrabold text-white">0{suffix}</span>
-      <p className="font-mono-tech mt-2 text-xs uppercase text-white/60">{label}</p>
+      <span ref={numRef} className="font-display text-5xl font-extrabold text-ink">0{suffix}</span>
+      <p className="font-mono-tech mt-2 text-xs uppercase text-ink/60">{label}</p>
     </div>
   );
 }

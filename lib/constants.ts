@@ -1,6 +1,6 @@
 export const CONTATO = {
   whatsapp: "5519996063421",
-  whatsappLabel: "+55 19 99606-3421",
+  whatsappLabel: "(19) 99606-3421",
   telefones: ["(19) 3537-1777", "(19) 3537-1786"],
   email: "comercial@jefiber.com.br",
   endereco: "Estrada Municipal do Biri (IPN-463), nº 230, Mini Distrito Industrial III, Ipeúna/SP, CEP 13.537-000",
@@ -27,6 +27,23 @@ export const DIREITOS =
 // Texto institucional (Nossa História) — fonte: site da empresa
 export const SOBRE_TEXTO =
   "A JE FIBER é especialista na fabricação, instalação e manutenção de produtos em fibra de vidro, oferecendo soluções robustas e personalizadas para os setores de saneamento básico e industrial. Com forte atuação em tratamentos de água, esgoto e efluentes, além de áreas industriais como química, alimentícia, petroquímica e sucroalcooleira, trazemos ampla experiência e comprometimento com a qualidade em cada projeto.";
+
+// Página Empresa (fonte: site original — "Sobre a Empresa")
+export const EMPRESA = {
+  intro: [
+    SOBRE_TEXTO,
+    "Nossa estrutura é equipada com softwares de última geração para o dimensionamento preciso de peças e equipamentos, garantindo que cada solução atenda às necessidades específicas de nossos clientes. A JE FIBER conta com um parque fabril avançado e especializado, com maquinários como sistemas de filament winding e spray up, além de moldes para reservatórios, tubulações e conexões, assegurando máxima qualidade e segurança em todos os produtos fabricados.",
+  ],
+  destaqueTitulo: "Excelência e Solidez para Parcerias Duradouras",
+  destaque: [
+    "Contamos com uma equipe altamente qualificada e experiente, preparada para garantir o manuseio seguro e eficiente de todos os nossos produtos. Trabalhamos com rigorosos padrões de controle de qualidade, atendendo a todas as normas técnicas de fabricação para assegurar a segurança e durabilidade de nossos equipamentos.",
+    "Além disso, oferecemos uma logística completa, cuidando de cada etapa do transporte e garantindo a segurança durante a amarração e descarga dos produtos no destino (opcional para contratação). Nossos técnicos especializados realizam serviços de montagem, reparos e manutenção em produtos de fibra de vidro.",
+    "Nosso compromisso é atender as expectativas de nossos clientes e construir parcerias sólidas e duradouras.",
+  ],
+  midiaTitulo: "Fenasucro & Agrocana 2025",
+  midiaResumo: "Marcamos presença na maior feira do setor sucroenergético, apresentando nossas soluções em fibra de vidro e fortalecendo parcerias.",
+  midiaFotos: ["/images/jeFiber_23.jpg", "/images/jeFiber_31.jpg", "/images/jeFiber_32.jpg", "/images/jeFiber_24.jpg"],
+} as const;
 
 export const NAV = [
   { label: "Sobre", href: "/#sobre" },
@@ -66,7 +83,7 @@ export const SOLUCOES: readonly Solucao[] = [
     manutencao: "Manutenção preventiva e corretiva dos módulos e tubulações.",
   },
   {
-    id: "ete", titulo: "Estações de Tratamento de Esgoto (ETE)", imagem: "/images/jeFiber_14.png",
+    id: "ete", titulo: "Estações de Tratamento de Esgoto (ETE)", imagem: "/images/jeFiber_14.jpg",
     resumo: "Tratamento de efluentes com equipamentos em fibra de vidro.",
     funcoes: "Tratamento biológico e físico-químico de efluentes; resistência a meios agressivos.",
     fabricacao: "Reatores, tanques e tubulações PRFV dimensionados por vazão.",
@@ -98,7 +115,7 @@ export type Produto = {
 export const PRODUTOS: readonly Produto[] = [
   {
     slug: "reservatorios", titulo: "Reservatórios PRFV", imagem: "/images/site-reservatorios.png",
-    galeria: ["/images/site-reservatorios.png", "/images/jeFiber_30.png", "/images/jeFiber_08.png"],
+    galeria: ["/images/site-reservatorios.png", "/images/jeFiber_30.jpg", "/images/jeFiber_08.jpg"],
     resumo: "Reservatórios verticais e horizontais para água e produtos químicos.",
     descricao: "Reservatórios fabricados em Plástico Reforçado com Fibra de Vidro (PRFV) para armazenamento de água potável, efluentes e produtos químicos. Alta resistência à corrosão, longa vida útil e baixíssima manutenção, com projeto sob medida para cada aplicação.",
     projeto: ["Dimensionamento conforme volume, pressão e produto armazenado", "Definição de bocais, costados, escadas e acessórios", "Memorial de cálculo e desenho técnico de fabricação"],
@@ -107,7 +124,7 @@ export const PRODUTOS: readonly Produto[] = [
   },
   {
     slug: "tubos", titulo: "Tubos e Conexões RPVC / PRFV", imagem: "/images/site-tubos.png",
-    galeria: ["/images/site-tubos.png", "/images/jeFiber_27.png", "/images/jeFiber_28.png"],
+    galeria: ["/images/site-tubos.png", "/images/jeFiber_27.jpg", "/images/jeFiber_28.jpg"],
     resumo: "Tubulação de alta resistência química e mecânica para adução e transporte.",
     descricao: "Tubos e conexões em RPVC e PRFV com alta resistência química e mecânica, indicados para adução e transporte de água bruta e tratada, efluentes e fluidos químicos, com fabricação sob medida por diâmetro e pressão de trabalho.",
     projeto: ["Definição de diâmetro, classe de pressão e tipo de fluido", "Projeto de traçado, conexões, curvas e reduções", "Especificação da resina conforme agressividade do meio"],
@@ -116,7 +133,7 @@ export const PRODUTOS: readonly Produto[] = [
   },
   {
     slug: "eta", titulo: "Estações de Tratamento de Água (ETA)", imagem: "/images/site-eta.png",
-    galeria: ["/images/site-eta.png", "/images/jeFiber_08.png", "/images/jeFiber_26.png"],
+    galeria: ["/images/site-eta.png", "/images/jeFiber_08.jpg", "/images/jeFiber_26.jpg"],
     resumo: "Soluções completas em PRFV para tratamento de água.",
     descricao: "Estações de Tratamento de Água compactas e modulares em PRFV, integrando floculação, decantação e filtração em equipamentos resistentes à corrosão, dimensionados conforme a vazão e a qualidade da água desejada.",
     projeto: ["Dimensionamento por vazão e parâmetros de qualidade", "Definição dos módulos de floculação, decantação e filtração", "Integração de tanques e tubulações em PRFV"],
@@ -124,8 +141,8 @@ export const PRODUTOS: readonly Produto[] = [
     supervisao: ["Acompanhamento de operação e ajustes de processo", "Manutenção preventiva e corretiva dos módulos", "Modernização e ampliação de unidades existentes"],
   },
   {
-    slug: "ete", titulo: "Estações de Tratamento de Esgoto (ETE)", imagem: "/images/jeFiber_30.png",
-    galeria: ["/images/jeFiber_30.png", "/images/jeFiber_26.png", "/images/jeFiber_08.png"],
+    slug: "ete", titulo: "Estações de Tratamento de Esgoto (ETE)", imagem: "/images/jeFiber_30.jpg",
+    galeria: ["/images/jeFiber_30.jpg", "/images/jeFiber_26.jpg", "/images/jeFiber_08.jpg"],
     resumo: "Tratamento de efluentes com equipamentos em fibra de vidro.",
     descricao: "Estações de Tratamento de Esgoto em PRFV para tratamento biológico e físico-químico de efluentes sanitários e industriais, com reatores, tanques e tubulações resistentes a meios agressivos e dimensionados por vazão.",
     projeto: ["Dimensionamento por vazão e carga orgânica", "Definição de reatores, tanques e tubulações", "Especificação de resinas para meios agressivos"],
@@ -139,21 +156,21 @@ export type ServicoDetalhe = { slug: string; titulo: string; imagem: string; des
 
 export const SERVICOS_DETALHE: readonly ServicoDetalhe[] = [
   {
-    slug: "calha-vertedora", titulo: "Calha Vertedora", imagem: "/images/jeFiber_14.png",
+    slug: "calha-vertedora", titulo: "Calha Vertedora", imagem: "/images/jeFiber_14.jpg",
     descricao: [
       "Calhas vertedoras em PRFV utilizadas no controle e na medição de fluxo em estações de tratamento de água e esgoto, garantindo distribuição uniforme e leitura precisa de vazão.",
       "Fabricadas sob medida, são resistentes à corrosão e a meios agressivos, com baixa manutenção e longa vida útil.",
     ],
   },
   {
-    slug: "comporta", titulo: "Comporta", imagem: "/images/jeFiber_30.png",
+    slug: "comporta", titulo: "Comporta", imagem: "/images/jeFiber_30.jpg",
     descricao: [
       "Comportas em fibra de vidro para controle e bloqueio de fluxo em canais, tanques e estações de tratamento, com vedação eficiente e operação suave.",
       "Resistentes à corrosão e a produtos químicos, são fabricadas sob medida conforme a necessidade de cada projeto.",
     ],
   },
   {
-    slug: "guarda-corpo", titulo: "Guarda-corpo", imagem: "/images/jeFiber_26.png",
+    slug: "guarda-corpo", titulo: "Guarda-corpo", imagem: "/images/jeFiber_26.jpg",
     descricao: [
       "Guarda-corpos em PRFV para proteção e segurança em passarelas, plataformas e áreas industriais, combinando leveza, resistência mecânica e durabilidade.",
       "Não conduzem eletricidade e resistem à corrosão, sendo ideais para ambientes agressivos onde o aço sofre desgaste acelerado.",

@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { AREAS } from "@/lib/constants";
+import { useT } from "@/lib/i18n";
 
 const ICONS = [
   // Açúcar e Álcool
@@ -18,36 +20,37 @@ const ICONS = [
 ];
 
 export default function Areas() {
+  const t = useT();
   return (
     <section id="areas" className="relative overflow-hidden py-24 md:py-32">
-      {/* foto de fundo com overlay marinho */}
+      {/* foto de fundo com overlay navy */}
       <div className="absolute inset-0 -z-10">
-        <Image src="/images/jeFiber_14.png" alt="" fill className="object-cover" sizes="100vw" />
+        <Image src="/images/jeFiber_14.jpg" alt="" fill className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-marinho/92" />
         <div className="absolute inset-0 [background:radial-gradient(70%_60%_at_50%_0%,rgba(10,12,74,.6),transparent)]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
-        <SectionLabel>Áreas de atuação</SectionLabel>
-        <h2 className="mb-12 max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight text-white sm:text-4xl">
-          Áreas em que atuamos
+        <SectionLabel>{t("Áreas de atuação")}</SectionLabel>
+        <h2 className="mb-12 max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight text-ink sm:text-4xl">
+          {t("Áreas em que atuamos")}
         </h2>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {AREAS.map((a, i) => (
             <article
               key={a.nome}
-              className="group rounded-2xl border border-white/10 bg-marinho-2/40 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-papoula/40 hover:shadow-[0_20px_50px_rgba(0,0,0,.4)]"
+              className="group rounded-2xl border border-line/10 bg-marinho-2/40 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-papoula/40 hover:shadow-[0_20px_50px_rgba(0,0,0,.4)]"
             >
               <div className="mb-5 grid h-14 w-14 place-items-center rounded-full bg-papoula text-white transition-transform duration-300 group-hover:scale-110">
                 <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">{ICONS[i % ICONS.length]}</svg>
               </div>
-              <h3 className="font-display text-lg font-bold uppercase text-white">{a.nome}</h3>
+              <h3 className="font-display text-lg font-bold uppercase text-ink">{t(a.nome)}</h3>
               <ul className="mt-4 space-y-2.5">
                 {a.itens.map((it) => (
-                  <li key={it} className="flex gap-2 font-body text-sm text-white/70">
+                  <li key={it} className="flex gap-2 font-body text-sm text-ink/70">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-papoula" />
-                    <span>{it}</span>
+                    <span>{t(it)}</span>
                   </li>
                 ))}
               </ul>

@@ -46,6 +46,11 @@ def run():
         info["downloads_title"] = page.title()
         info["pdf_links"] = page.locator("a[href$='.pdf']").count()
         page.screenshot(path=os.path.join(OUT, "downloads.png"), full_page=True)
+
+        # Empresa
+        page.goto(f"{BASE}/empresa", wait_until="domcontentloaded"); page.wait_for_timeout(1200)
+        info["empresa_title"] = page.title()
+        page.screenshot(path=os.path.join(OUT, "empresa.png"), full_page=True)
         ctx.close()
 
         # Mobile 390 — overflow + menu hambúrguer

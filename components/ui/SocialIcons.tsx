@@ -45,8 +45,8 @@ export default function SocialIcons({
           style={{ width: size, height: size }}
           className={
             variant === "chip"
-              ? "grid place-items-center rounded-full border border-white/15 text-white/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-papoula hover:text-papoula"
-              : "grid place-items-center text-white/80 transition-colors duration-200 hover:text-papoula"
+              ? "grid place-items-center rounded-full border border-line/15 text-ink/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-papoula hover:text-papoula"
+              : "grid place-items-center text-ink/80 transition-colors duration-200 hover:text-papoula"
           }
         >
           <svg viewBox="0 0 24 24" width={size * 0.5} height={size * 0.5} aria-hidden="true">
