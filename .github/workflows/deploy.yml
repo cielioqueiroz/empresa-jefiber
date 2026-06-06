@@ -28,6 +28,9 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: "true"
+          # URL real onde o site fica publicado — usada pelo metadataBase para
+          # gerar os links absolutos do banner (Open Graph / WhatsApp).
+          NEXT_PUBLIC_SITE_URL: "https://cielioqueiroz.github.io"
       - uses: actions/configure-pages@v5
         with:
           enablement: true
