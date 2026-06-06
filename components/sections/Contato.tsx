@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import SectionLabel from "@/components/ui/SectionLabel";
-import { CONTATO } from "@/lib/constants";
+import { CONTATO, LGPD_CONSENTIMENTO } from "@/lib/constants";
 import { buildWhatsappUrl, buildMailtoUrl, type ContactForm } from "@/lib/contact";
 
 const VAZIO: ContactForm = { nome: "", telefone: "", email: "", mensagem: "" };
@@ -29,9 +29,14 @@ const ICON_MSG = (
 
 export default function Contato() {
   const [form, setForm] = useState<ContactForm>(VAZIO);
+  const [aceito, setAceito] = useState(false);
   const set = (k: keyof ContactForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((prev) => ({ ...prev, [k]: e.target.value }));
-  const enviarWhats = (e: React.FormEvent) => { e.preventDefault(); window.open(buildWhatsappUrl(form, CONTATO.whatsapp), "_blank"); };
+  const enviarWhats = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!aceito) return;
+    window.open(buildWhatsappUrl(form, CONTATO.whatsapp), "_blank");
+  };
 
   return (
     <section id="contato" className="mx-auto max-w-7xl px-6 py-24 md:py-32">
@@ -68,11 +73,33 @@ export default function Contato() {
             <span className="pointer-events-none absolute left-3.5 top-4 text-papoula">{ICON_MSG}</span>
             <textarea required aria-label="Mensagem" value={form.mensagem} onChange={set("mensagem")} placeholder="Mensagem" rows={5} className="input-soft w-full border border-white/15 bg-marinho-2/40 py-3 pl-11 pr-4 font-body text-white placeholder:text-white/40" />
           </div>
+          <label className="flex cursor-pointer items-start gap-3">
+            <input
+              type="checkbox"
+              checked={aceito}
+              onChange={(e) => setAceito(e.target.checked)}
+              aria-label="Aceito o consentimento de contato"
+              className="mt-0.5 h-5 w-5 shrink-0 accent-papoula"
+            />
+            <span className="font-body text-xs leading-relaxed text-white/60">{LGPD_CONSENTIMENTO}</span>
+          </label>
           <div className="flex flex-wrap gap-3">
-            <button type="submit" className="btn-soft btn-red bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white">Enviar pelo WhatsApp</button>
-            <a href={buildMailtoUrl(form, CONTATO.email)} className="btn-soft btn-ghost border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white">Enviar por e-mail</a>
+            <button
+              type="submit"
+              disabled={!aceito}
+              className="btn-soft btn-red bg-papoula px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+            >
+              Enviar pelo WhatsApp
+            </button>
+            <a
+              href={aceito ? buildMailtoUrl(form, CONTATO.email) : undefined}
+              aria-disabled={!aceito}
+              className={`btn-soft btn-ghost border border-white/30 px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-white/90 hover:border-white ${aceito ? "" : "pointer-events-none opacity-40"}`}
+            >
+              Enviar por e-mail
+            </a>
           </div>
-          {/* TODO: integrar envio real (Formspree/Resend) quando aprovado */}
+          {/* TODO: reCAPTCHA + envio real (Formspree/Resend) exigem chaves/backend — integrar quando aprovado */}
         </form>
       </div>
     </section>

@@ -7,9 +7,9 @@ import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-type Props = { text: string; as?: "h1" | "h2" | "h3" | "p"; className?: string };
+type Props = { text: string; as?: "h1" | "h2" | "h3" | "p"; className?: string; immediate?: boolean };
 
-export default function RevealText({ text, as = "h2", className = "" }: Props) {
+export default function RevealText({ text, as = "h2", className = "", immediate = false }: Props) {
   const ref = useRef<HTMLElement>(null);
   const Tag = as as unknown as React.ComponentType<{
     ref?: React.Ref<HTMLElement>;
@@ -22,7 +22,8 @@ export default function RevealText({ text, as = "h2", className = "" }: Props) {
     const els = ref.current!.querySelectorAll(".rw");
     gsap.fromTo(els, { yPercent: 110, opacity: 0 }, {
       yPercent: 0, opacity: 1, stagger: 0.05, ease: "power3.out", duration: 0.8,
-      scrollTrigger: { trigger: ref.current, start: "top 80%" },
+      // acima da dobra (hero): anima no carregamento; demais: ao rolar até o elemento
+      ...(immediate ? { delay: 0.15 } : { scrollTrigger: { trigger: ref.current, start: "top 85%" } }),
     });
   }, { scope: ref });
   return (

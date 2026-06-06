@@ -41,3 +41,6 @@ next-env.d.ts
 # acervo-fonte pesado (fotos originais duplicadas em public/images, brandbook PDF, briefing)
 # mantido localmente; não precisa no repositório
 /assets/
+
+# prints de referência do site original (~80MB) — material de apoio, mantido local
+/public/images/prints-jeFiber/

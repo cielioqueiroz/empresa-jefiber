@@ -56,6 +56,13 @@ def run():
             page.evaluate("window.scrollTo(0, document.body.scrollHeight)"); page.wait_for_timeout(800)
             page.screenshot(path=os.path.join(OUT, "desktop_footer.png"))
         except Exception as e: errors.append(f"[footer] {e}")
+        # hover do botão de WhatsApp
+        try:
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)"); page.wait_for_timeout(300)
+            page.locator("a[aria-label='Falar no WhatsApp']").hover()
+            page.wait_for_timeout(700)
+            page.screenshot(path=os.path.join(OUT, "desktop_whatsapp_hover.png"))
+        except Exception as e: errors.append(f"[wa-hover] {e}")
 
         ctx.close()
 
@@ -72,6 +79,18 @@ def run():
             mp.screenshot(path=os.path.join(OUT, "mobile_full.png"), full_page=True)
             m.close()
         except Exception as e: errors.append(f"[mobile] {e}")
+
+        # ---- Superwide 2560 (verifica logo no header/topbar) ----
+        try:
+            sw = browser.new_context(viewport={"width": 2560, "height": 1080}, device_scale_factor=1)
+            sp = sw.new_page()
+            sp.goto(URL, wait_until="networkidle")
+            sp.wait_for_timeout(2000)
+            info["logo_header_visible"] = sp.locator("header img[alt='JE FIBER']").first.is_visible()
+            sp.screenshot(path=os.path.join(OUT, "superwide_top.png"))
+            sw.close()
+        except Exception as e:
+            errors.append(f"[superwide] {e}")
 
         browser.close()
 

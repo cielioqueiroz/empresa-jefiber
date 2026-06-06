@@ -144,6 +144,11 @@ textarea:focus-visible {
   outline: none;
 }
 
+/* ---------- Bolha de foto do hero (flutuação sutil) ---------- */
+.bubble-float { animation: bubble-float 7s ease-in-out infinite; will-change: transform; }
+@keyframes bubble-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+@media (prefers-reduced-motion: reduce) { .bubble-float { animation: none; } }
+
 /* ---------- Ken-burns sutil para fotos da empresa ---------- */
 .kenburns { animation: kenburns 20s ease-in-out infinite alternate; will-change: transform; }
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09); } }

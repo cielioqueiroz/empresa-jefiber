@@ -50,13 +50,13 @@ export default function FiberOrb({ scrollRef }: { scrollRef: React.MutableRefObj
       uLow: { value: new THREE.Color("#0a1a6e") },
       uHigh: { value: new THREE.Color("#5b7cff") },
       uAccent: { value: new THREE.Color("#ff2b2b") },
-      uOpacity: { value: 0.6 },
+      uOpacity: { value: 0.4 },
     }),
     []
   );
 
   const haloGeo = useMemo(() => {
-    const n = 450;
+    const n = 140;
     const pos = new Float32Array(n * 3);
     for (let i = 0; i < n; i++) {
       // distribuição em casca esférica ao redor do orbe
@@ -93,7 +93,7 @@ export default function FiberOrb({ scrollRef }: { scrollRef: React.MutableRefObj
     <>
       <group ref={group}>
         <mesh>
-          <icosahedronGeometry args={[2.1, 6]} />
+          <icosahedronGeometry args={[2.1, 3]} />
           <shaderMaterial
             ref={mat}
             vertexShader={vertexShader}
@@ -106,7 +106,7 @@ export default function FiberOrb({ scrollRef }: { scrollRef: React.MutableRefObj
         </mesh>
       </group>
       <points ref={halo} geometry={haloGeo} position={[2.0, 0, 0]}>
-        <pointsMaterial color="#9fb4ff" size={0.03} transparent opacity={0.55} sizeAttenuation />
+        <pointsMaterial color="#9fb4ff" size={0.022} transparent opacity={0.3} sizeAttenuation />
       </points>
     </>
   );

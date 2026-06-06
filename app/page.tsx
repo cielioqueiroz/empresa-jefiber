@@ -2,6 +2,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Sobre from "@/components/sections/Sobre";
+import Banner from "@/components/sections/Banner";
 import Solucoes from "@/components/sections/Solucoes";
 import Servicos from "@/components/sections/Servicos";
 import Areas from "@/components/sections/Areas";
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Sobre />
+      <Banner />
       <Solucoes />
       <Servicos />
       <Areas />
